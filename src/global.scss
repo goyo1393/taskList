@@ -35,3 +35,21 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+.button-container {
+  display: flex;         
+  justify-content: center;  
+  width: 100%;
+  margin-top: 10px;
+  max-width: 500px;
+
+  .add-task-button {
+    width: 100%;              // Ancho del botón basado en porcentaje
+    max-width: 100%;        // Ancho máximo opcional para evitar que se expanda demasiado
+  }
+}
+
+ion-list-header {
+  font-size: 18px; // Cambia el tamaño del texto
+  font-weight: bold; // Hace el texto más grueso
+}

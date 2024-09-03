@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Task List
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,45 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Task List</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 10px;">
+    <ion-input label="Task" label-placement="floating" fill="outline" placeholder="Enter text" [(ngModel)]='nuevaTarea'></ion-input>
+    <div class="button-container">
+      <ion-button class="add-task-button" color="tertiary" (click)="crear()">Add Task</ion-button>
+    </div>    
   </div>
+
+  <div style="padding: 10px;">
+    <ion-list>
+      <ion-list-header>
+        <ion-label class="ion-text-large ion-text-bold">Created Task</ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let tarea of servicio.tareas; index as i">
+      <ion-item [button]="true">
+        <ion-label> {{tarea}}</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="danger" expandable="true" (click)="eliminar(i)">
+          <ion-label>Delete</ion-label>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    </ion-list>
+  </div>
+
+  <ion-content class="ion-padding">
+    <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
+    <ion-toast
+      [isOpen]="isToastOpen"
+      message="Se ha eliminado la tarea de forma correcta"
+      [duration]="5000"
+      (didDismiss)="setOpen(false)"
+    ></ion-toast>
+  </ion-content>
+  
 </ion-content>
